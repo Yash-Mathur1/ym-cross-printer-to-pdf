@@ -44,7 +44,7 @@ export default function normalize(
     bin,
     paperSize,
     paperKind,
-    copies,
+    copies: assertPositiveInteger("copies", copies),
     // Historically silent defaults on, and any value but an explicit false
     // keeps it on.
     silent: options.silent !== false,
@@ -75,4 +75,19 @@ function assertOneOf<T extends string>(
   if (valid.includes(value)) return value;
 
   throw new InvalidOptionError(option, valid);
+}
+
+/**
+ * Guards counts that must be whole and at least one. Left unchecked, `copies: 0`
+ * silently printed a single copy and a negative value reached the backend as a
+ * malformed setting.
+ */
+function assertPositiveInteger(
+  option: string,
+  value: number | undefined,
+): number | undefined {
+  if (value === undefined) return undefined;
+  if (Number.isInteger(value) && value >= 1) return value;
+
+  throw new InvalidOptionError(option, ["a whole number of 1 or more"]);
 }

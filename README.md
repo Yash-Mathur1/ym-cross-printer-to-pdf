@@ -207,10 +207,43 @@ The API is source-compatible; these are the behavioural differences:
 - **Unsupported options throw** on platforms that cannot honour them. Pass `{ strict: false }` for the old silent behaviour.
 - **`sumatraPdfPath` is deprecated** in favour of `win32.sumatraPdfPath`. It still works.
 
+## Licensing and redistribution
+
+**Read this before shipping a commercial product built on this package.**
+
+Two licences are in play:
+
+| Component                 | Licence     | Redistributed?  |
+| ------------------------- | ----------- | --------------- |
+| This package's own code   | MIT         | Yes             |
+| `SumatraPDF-3.4.6-32.exe` | **GPL-3.0** | Yes, in `dist/` |
+| CUPS (`lp`, `lpstat`)     | Apache-2.0  | No              |
+
+The MIT half is unrestricted: use it commercially, modify it, sell products built on it. Keep the `LICENSE` file, which carries both the original author's copyright and this fork's.
+
+The GPL half needs a decision. SumatraPDF runs as a **separate process over a command line** — nothing is linked into your application — so your own code is not made a derivative work and keeps whatever licence you choose. What does apply is the obligation to **pass on the licence and a source offer to anyone you give the binary to**, including through an installer, container image, or Electron bundle.
+
+You have two clean options:
+
+1. **Keep bundling it.** Ship [`THIRD-PARTY-NOTICES.md`](THIRD-PARTY-NOTICES.md) and [`licenses/GPL-3.0.txt`](licenses/GPL-3.0.txt) with your product. Both are included in the published package already.
+2. **Do not ship it.** Point at a copy the user installs themselves and exclude the bundled binary from your build:
+
+   ```typescript
+   await print("document.pdf", {
+     win32: { sumatraPdfPath: "C:/Program Files/SumatraPDF/SumatraPDF.exe" },
+   });
+   ```
+
+   On macOS and Linux this question does not arise at all — CUPS is part of the operating system and nothing is redistributed.
+
+See [`THIRD-PARTY-NOTICES.md`](THIRD-PARTY-NOTICES.md) for the full attribution and source offer. This is a practical summary, not legal advice.
+
 ## Credits
 
-A fork of [pdf-to-printer](https://github.com/artiebits/pdf-to-printer) by [artiebits](https://github.com/artiebits), extended for macOS and Linux. Windows printing uses [SumatraPDF](https://www.sumatrapdfreader.org/), which is bundled with this package.
+A fork of [pdf-to-printer](https://github.com/artiebits/pdf-to-printer) by [artiebits](https://github.com/artiebits), extended for macOS and Linux. Windows printing uses [SumatraPDF](https://www.sumatrapdfreader.org/) by Krzysztof Kowalczyk and contributors.
 
 ## License
 
 [MIT](LICENSE) — © 2019 artiebits, © 2026 Yash-Mathur1
+
+Bundled third-party components keep their own licences; see [`THIRD-PARTY-NOTICES.md`](THIRD-PARTY-NOTICES.md).

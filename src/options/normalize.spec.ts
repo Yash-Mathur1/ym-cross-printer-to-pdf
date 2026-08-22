@@ -56,6 +56,24 @@ describe("validation", () => {
   });
 });
 
+describe("copies", () => {
+  it("accepts a whole count of one or more", () => {
+    expect(normalize({ copies: 1 }).copies).toBe(1);
+    expect(normalize({ copies: 99 }).copies).toBe(99);
+  });
+
+  it("is undefined when omitted", () => {
+    expect(normalize().copies).toBeUndefined();
+  });
+
+  it.each([0, -1, 1.5, NaN, Infinity])("rejects %p", (copies) => {
+    // Zero previously printed one copy and -1 reached the backend as "-1x".
+    expect(() => normalize({ copies })).toThrow(
+      "Invalid copies provided. Valid names: a whole number of 1 or more",
+    );
+  });
+});
+
 describe("sumatraPdfPath", () => {
   it("accepts the deprecated top-level form", () => {
     expect(normalize({ sumatraPdfPath: "a.exe" }).win32.sumatraPdfPath).toBe(
