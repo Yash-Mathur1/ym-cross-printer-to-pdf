@@ -42,6 +42,26 @@ it("throws when no file is specified.", async () => {
   await expect(print()).rejects.toThrow("No PDF specified");
 });
 
+it("reports an invalid option even when the file is also missing", async () => {
+  // Option validation runs before the file check, so a bad path cannot mask a
+  // bad constant. Without this order the caller fixes the path, reruns, and
+  // only then discovers the real problem.
+  mockedExistsSync.mockImplementation(() => false);
+
+  await expect(
+    // @ts-ignore intentionally invalid
+    print("missing.pdf", { side: "sideways" }),
+  ).rejects.toThrow("Invalid side provided");
+});
+
+it("still reports a missing file when the options are valid", async () => {
+  mockedExistsSync.mockImplementation(() => false);
+
+  await expect(print("missing.pdf", { copies: 2 })).rejects.toThrow(
+    "No such file",
+  );
+});
+
 it("throws when file not found", async () => {
   mockedExistsSync.mockImplementation(() => false);
 

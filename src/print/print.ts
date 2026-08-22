@@ -36,14 +36,19 @@ export default async function print(
   pdf: string,
   options: PrintOptions = {},
 ): Promise<void> {
+  if (!pdf) throw new FileNotFoundError("No PDF specified");
+
   const driver = resolveDriver();
 
-  if (!pdf) throw new FileNotFoundError("No PDF specified");
-  if (!fs.existsSync(pdf)) throw new FileNotFoundError("No such file");
-
+  // Options are validated before the file is looked at. An invalid option is a
+  // programming error and a missing file is an environment one; reporting the
+  // former first keeps the failure deterministic regardless of what happens to
+  // be on disk, and stops a bad path from masking a bad constant.
   const normalized = normalize(options);
 
   assertSupported(driver, normalized);
+
+  if (!fs.existsSync(pdf)) throw new FileNotFoundError("No such file");
 
   await driver.print(pdf, normalized);
 }

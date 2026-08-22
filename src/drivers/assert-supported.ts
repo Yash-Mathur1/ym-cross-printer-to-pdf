@@ -30,7 +30,6 @@ export default function assertSupported(
   }
 
   for (const option of unsupported) {
-    // eslint-disable-next-line no-console
     console.warn(
       `[${PACKAGE_NAME}] Ignoring option "${option}": ` +
         `not supported by the ${driver.id} printing backend.`,
