@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Print PDF files and images to printers on Windows, macOS and Linux from Node.js and Electron. One API over SumatraPDF and CUPS, with duplex, paper size, tray selection and silent printing.",
   "license": "MIT",
-  "author": "Yash-Mathur1 <ymathur0987@gmail.com>",
+  "author": "Yash Mathur <ymathur0987@gmail.com>",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Yash-Mathur1/ym-cross-printer-to-pdf.git"

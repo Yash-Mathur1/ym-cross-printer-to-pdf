@@ -244,6 +244,6 @@ A fork of [pdf-to-printer](https://github.com/artiebits/pdf-to-printer) by [arti
 
 ## License
 
-[MIT](LICENSE) — © 2019 artiebits, © 2026 Yash-Mathur1
+[MIT](LICENSE) — © 2019 artiebits, © 2026 Yash Mathur
 
 Bundled third-party components keep their own licences; see [`THIRD-PARTY-NOTICES.md`](THIRD-PARTY-NOTICES.md).

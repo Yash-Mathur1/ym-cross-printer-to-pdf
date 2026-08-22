@@ -5,3 +5,7 @@ dist
 yarn.lock
 .idea
 *.tgz
+
+# Assistant scratch files — never publish
+CLAUDE.md
+.claude/
