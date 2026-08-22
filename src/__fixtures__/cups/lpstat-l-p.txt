@@ -1,0 +1,18 @@
+printer Brother_MFC_L3750CDW is idle.  enabled since Mon 12 Feb 2024 09:14:03 AM UTC
+	Description: Brother MFC-L3750CDW series
+	Alerts: none
+	Location: Back office
+	Connection: direct
+	Interface: /etc/cups/ppd/Brother_MFC_L3750CDW.ppd
+printer HP_LaserJet_Pro is idle.  enabled since Mon 12 Feb 2024 09:14:03 AM UTC
+	Description: HP LaserJet Pro M404dn
+	Location: Floor 2
+	Connection: direct
+printer PDF is idle.  enabled since Mon 12 Feb 2024 09:14:03 AM UTC
+	Description:
+	Location:
+	Connection: direct
+printer Zebra_ZTC_ZPL is idle.  enabled since Mon 12 Feb 2024 09:14:03 AM UTC
+	Description: Zebra ZTC ZPL Label Printer
+	Location:
+	Connection: direct

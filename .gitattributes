@@ -1,0 +1,7 @@
+# Normalize to LF in the repository regardless of a contributor's platform or
+# core.autocrlf setting. Without this, a CRLF commit from a Windows checkout
+# fails `prettier --check` on the Linux CI runner.
+* text=auto eol=lf
+
+# Never apply text conversion to the bundled printing engine.
+*.exe binary

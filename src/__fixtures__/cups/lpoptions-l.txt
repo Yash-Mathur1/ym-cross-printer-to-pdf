@@ -1,0 +1,5 @@
+PageSize/Media Size: *Letter A4 A5 A6 Legal Executive Statement FanFoldGermanLegal Custom.WIDTHxHEIGHT
+InputSlot/Media Source: *Auto Tray1 Tray2 Manual
+ColorModel/Color Mode: *RGB Gray
+Duplex/Two-Sided Printing: *None DuplexNoTumble DuplexTumble
+Resolution/Resolution: 300dpi *600dpi 1200dpi

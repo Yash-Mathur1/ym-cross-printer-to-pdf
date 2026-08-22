@@ -1,0 +1,92 @@
+{
+  "name": "@ym1/cross-printer-to-pdf",
+  "version": "1.0.0",
+  "description": "Print PDF files and images to printers on Windows, macOS and Linux from Node.js and Electron. One API over SumatraPDF and CUPS, with duplex, paper size, tray selection and silent printing.",
+  "license": "MIT",
+  "author": "Yash-Mathur1 <ymathur0987@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yash-Mathur1/ym-cross-printer-to-pdf.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Yash-Mathur1/ym-cross-printer-to-pdf/issues"
+  },
+  "homepage": "https://github.com/Yash-Mathur1/ym-cross-printer-to-pdf#readme",
+  "main": "dist/bundle.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
+  "scripts": {
+    "test": "jest",
+    "lint": "prettier --write .",
+    "lint:check": "prettier --check .",
+    "typecheck": "tsc --noEmit",
+    "build": "webpack --config webpack.production.config.js",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run lint:check && npm run typecheck && npm run test && npm run build"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,ts,json,md}": [
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.28.3",
+    "@babel/core": "^7.28.4",
+    "@babel/preset-env": "^7.28.3",
+    "@babel/preset-typescript": "^7.27.1",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^25.0.3",
+    "babel-jest": "^30.2.0",
+    "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^13.0.1",
+    "husky": "^9.1.7",
+    "jest": "^30.2.0",
+    "jest-mock": "^30.2.0",
+    "lint-staged": "^16.2.3",
+    "prettier": "^3.6.2",
+    "terser-webpack-plugin": "^5.3.14",
+    "ts-jest": "^29.4.4",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.9.2",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^6.0.1"
+  },
+  "keywords": [
+    "pdf",
+    "printer",
+    "pdf-printer",
+    "print-pdf",
+    "cross-platform",
+    "windows",
+    "macos",
+    "linux",
+    "cups",
+    "lp",
+    "sumatra",
+    "zebra-printer",
+    "rollo-printer",
+    "label-printer",
+    "thermal-printer",
+    "shipping-label",
+    "silent-print",
+    "invoice-printing",
+    "node.js",
+    "nodejs-printer",
+    "electron",
+    "electron-print"
+  ]
+}
